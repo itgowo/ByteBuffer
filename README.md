@@ -38,7 +38,7 @@ Netty的CompositeByteBuf处理方式会把多个ByteBuf用list形式组织起来
 我写的这个ByteBuffer也支持销毁已读部分discardReadBytes()，获取原始array()和获取剩余可读数据readableBytesArray()，单独读写int、byte或者long，随意移动指针位置等。
 从数组拷贝上使用System.arraycopy()，效率比较有保证
 
-### 二：简单使用
+### 四：简单使用
 ###### ByteBuffer结构
 
 |变量名|类型|说明|
@@ -82,11 +82,11 @@ capacity参数指定初始数组大小，默认为***256***.
 |writeBytes(ByteBuffer b)|待写入ByteBuffer||ByteBuffer|写入一个ByteBuffer可读数据|
 |writeBytes(ByteBuffer b, int dataLength)|待写入ByteBuffer|指定写入长度|ByteBuffer|写入一个ByteBuffer可读数据的部分长度|
 
-### 三：原理解析
+### 五：原理解析
 
 创建一个数组，通过读写index来表示当前数组可操作区域，不用多次创建新数组并拷贝了，虽然默认数组可能会变得很大，减少创建拷贝过程能提高性能，以空间换时间。另外数组一般不轻易超过4k吧，都是碎片的小数据，用这种方案最合适，如果是大数据量，那就没有什么意义了。
  
-### 四：小期待
+### 六：小期待
 
 以下项目都是我围绕远程控制写的项目和子项目。都给star一遍吧。😍
 
